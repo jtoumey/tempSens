@@ -13,7 +13,6 @@ timeStamp = time.strftime("%Y%m%d_%H%M%S")
 outFileName = "".join(["temp_sensor_data_", timeStamp, ".dat"]) 
 outFile = open(outFileName, 'w') 
 outFile.write('    time [s]    temp [*C]    temp [*F]\n') 
-tCount = 0
 
 print("\n    time [s]    temp [*C]    temp [*F]")
 
@@ -35,21 +34,24 @@ def read_temp():
         temp_f = temp_c * 9.0 / 5.0 + 32.0
         return temp_c, temp_f
 
+# Intial time and screen print information
 tInit = time.time()	
+tInterval = 5.0 
+print("\n    time [s]    temp [*C]    temp [*F]")
+
 # Main Loop
 try:
 	while True:
-		#t1 = time.time()
+		t1 = time.time()
 		[temp_c, temp_f] = read_temp()
 		t2 = time.time()
 		dt = t2 - tInit
 		outFile.write(" %11.3f %12.2f %12.2f\n" % (dt, temp_c, temp_f))
 
 		print("%12.2f %12.2f %12.2f" % (dt, temp_c, temp_f))
-		time.sleep(1)
+		tDiff = tInterval - (t2 - t1)
+		time.sleep(tDiff)
 	
-		#tCount = tCount + 1
-
 except KeyboardInterrupt:
 	print("Keyboard Interrupt, ending main loop...")
 	pass
