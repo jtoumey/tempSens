@@ -14,8 +14,6 @@ outFileName = "".join(["temp_sensor_data_", timeStamp, ".dat"])
 outFile = open(outFileName, 'w') 
 outFile.write('    time [s]    temp [*C]    temp [*F]\n') 
 
-print("\n    time [s]    temp [*C]    temp [*F]")
-
 def read_temp_raw():
     f = open(device_file, 'r')
     lines = f.readlines()
