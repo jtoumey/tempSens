@@ -44,9 +44,9 @@ try:
 		[temp_c, temp_f] = read_temp()
 		t2 = time.time()
 		dt = t2 - tInit
-		outFile.write(" %11.3f %12.2f %12.2f\n" % (dt, temp_c, temp_f))
+		outFile.write(" %12.2e %12.2f %12.2f\n" % (dt, temp_c, temp_f))
 
-		print("%12.2f %12.2f %12.2f" % (dt, temp_c, temp_f))
+		print("%12.2e %12.2f %12.2f" % (dt, temp_c, temp_f))
 		tDiff = tInterval - (t2 - t1)
 		time.sleep(tDiff)
 	
