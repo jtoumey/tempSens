@@ -12,7 +12,7 @@ device_file = device_folder + '/w1_slave'
 timeStamp = time.strftime("%Y%m%d_%H%M%S") 
 outFileName = "".join(["temp_sensor_data_", timeStamp, ".dat"]) 
 outFile = open(outFileName, 'w') 
-outFile.write('    time [s]    temp [*C]    temp [*F]\n') 
+outFile.write('        time [s]        temp [*C]        temp [*F]\n') 
 
 def read_temp_raw():
     f = open(device_file, 'r')
@@ -35,7 +35,7 @@ def read_temp():
 # Intial time and screen print information
 tInit = time.time()	
 tInterval = 5.0 
-print("\n    time [s]    temp [*C]    temp [*F]")
+print("\n        time [s]        temp [*C]        temp [*F]")
 
 # Main Loop
 try:
@@ -44,7 +44,7 @@ try:
 		[temp_c, temp_f] = read_temp()
 		t2 = time.time()
 		dt = t2 - tInit
-		outFile.write(" %16.6e %16.6e %16.6e\n" % (dt, temp_c, temp_f))
+		outFile.write("%16.6e %16.6e %16.6e\n" % (dt, temp_c, temp_f))
 
 		print("%16.6e %16.6e %16.6e" % (dt, temp_c, temp_f))
 		tDiff = tInterval - (t2 - t1)
